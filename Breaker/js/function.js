@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   $("input[name='leaderBoard']").change(function () {
     var inputValue = $(this).attr("value");
@@ -8,43 +7,35 @@ $(document).ready(function () {
   });
 
   $(".toggleButtonAdmin").click(function () {
-    $(".toggleShowInfo").toggleClass('hide');
+    $(".toggleShowInfo").toggleClass("hide");
   });
 
   $(".needCheckedOne").click(function () {
-    $(".checkedOne").toggleClass('hide');
+    $(".checkedOne").toggleClass("hide");
   });
 
   $(".needCheckedTwo").click(function () {
-    $(".checkedTwo").toggleClass('hide');
+    $(".checkedTwo").toggleClass("hide");
   });
 
   $(".toggleButtonScore").click(function () {
-    $(".numberScore").toggleClass('hide');
+    $(".numberScore").toggleClass("hide");
   });
 
   $(".toggleButtonMessage").click(function () {
-    $(".messageText").toggleClass('hide');
+    $(".messageText").toggleClass("hide");
   });
-  
-  
 });
-
-
-
 
 // const hf = setInterval(function (){
 //   console.log('je suis la')
 // },1000)
-  
-
 
 // $("#chatBox").scrollTop($("#chatBox")[0].scrollHeight);
 // chatBox.scrollTo(0,document.body.scrollHeight);
 
 // $("#chatBox").scrollTop($("#chatBox")[0].scrollHeight);
 // chatBox.scrollTo(0,document.body.scrollHeight);
-
 
 // sendScore.addEventListener('click', function() {
 //   $(".own-message").load(window.location + " .own-message");

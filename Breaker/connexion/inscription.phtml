@@ -52,7 +52,7 @@
       {
         $username = secure_entry($_POST['username']);
         $email = secure_entry($_POST['email']);
-        $email_hash = password_hash($email,PASSWORD_DEFAULT); //crypte le mail ici
+        $email_hash = password_hash($email, PASSWORD_DEFAULT); //crypte le mail ici
         $password = secure_entry($_POST['password']);
         $password_hash = password_hash($password, PASSWORD_DEFAULT); // crypte le mdp ici
 

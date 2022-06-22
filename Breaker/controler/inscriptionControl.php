@@ -25,7 +25,7 @@ function differentMail($word, $array)
 { // verifie si le mail renseigner est deja utilisé/présent dans la base de donnée
     $isEmailDifferent = null;
     for ($i = 0; $i < count($array); $i++) {
-        if (password_verify($word,$array[$i]["email"])) {
+        if (password_verify($word, $array[$i]["email"])) {
             $isEmailDifferent = false; // false == le mail est deja présent dans la base de donné
             break; //arrete de faire tourner le if
         } else {

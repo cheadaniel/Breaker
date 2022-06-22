@@ -9,48 +9,48 @@ require_once 'connexion/auth.php';
     require_once './controler/chatRoomControl.php';
     require_once './pageElements/header.php';
     ?>
-    
+
     <main id="mainChatRoom">
         <h2>ChatRoom</h2>
         <div class="chatBox">
-            
-                <?php for($i = 0; $i<count($messageGet);$i++):?>
-            <div class ="messageCard">
-                
-                    <div class ="messageInfos">
-                        <?php for($j = 0; $j<count($IdAndNameGet);$j++):?>
-                            <?php if($messageGet[$i]['id_user']==$IdAndNameGet[$j]['id']): ?>
-                                <p class ="userNameMessage">
-                                    <?= $IdAndNameGet[$j]['name'] ?>    
+
+            <?php for ($i = 0; $i < count($messageGet); $i++) : ?>
+                <div class="messageCard">
+
+                    <div class="messageInfos">
+                        <?php for ($j = 0; $j < count($IdAndNameGet); $j++) : ?>
+                            <?php if ($messageGet[$i]['id_user'] == $IdAndNameGet[$j]['id']) : ?>
+                                <p class="userNameMessage">
+                                    <?= $IdAndNameGet[$j]['name'] ?>
                                 </p>
                             <?php endif; ?>
                         <?php endfor; ?>
-                        <p class = "dateMessage">
-                            <?= substr($messageGet[$i]['create_at'] ,0)?>
+                        <p class="dateMessage">
+                            <?= substr($messageGet[$i]['create_at'], 0) ?>
                         </p>
                     </div>
-                    <div class ="messageContent">
+                    <div class="messageContent">
                         <?= $messageGet[$i]['text'] ?>
                     </div>
                 </div>
-            
-                <?php endfor; ?>
-            
+
+            <?php endfor; ?>
+
         </div>
-        
+
         <div>
-            <form method ="POST" class = "formLogin send_message">
+            <form method="POST" class="formLogin send_message">
                 <div class="form-group">
                     <label for="msgContent">Message</label>
-                    <textarea name="msgContent" rows="10" cols="50" placeholder="Message à écrire ici"required></textarea>
+                    <textarea name="msgContent" rows="10" cols="50" placeholder="Message à écrire ici" required></textarea>
                     <button type="submit" class="btn" id="reloadChatRoom">Envoyer</button>
                 </div>
             </form>
         </div>
-    
-    <script src="./js/chatFunction.js"></script>
-<?php endif; ?>
 
-<?php
-require_once './pageElements/footer.php';
-?>   
+        <script src="./js/chatFunction.js"></script>
+    <?php endif; ?>
+
+    <?php
+    require_once './pageElements/footer.php';
+    ?>

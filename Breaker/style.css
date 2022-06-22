@@ -19,14 +19,16 @@ main {
     background: linear-gradient(135deg, rgba(210, 76, 223, 1) 19%, rgba(151, 117, 250, 1) 41%, rgba(98, 68, 131, 1) 64%, rgba(109, 68, 120, 1) 100%);
 }
 
-button, input,textarea {
+button,
+input,
+textarea {
     font-family: 'Courgette', cursive;
 }
 
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    
+
 }
 
 
@@ -40,7 +42,7 @@ th,
 h1,
 h2,
 h3,
-textarea{
+textarea {
     margin: 0;
     padding: 0;
 }
@@ -625,7 +627,7 @@ th {
 
 #mainContact .form-group {
     width: 75%;
-} 
+}
 
 #mainContact textarea {
     color: #ff7c00;
@@ -650,10 +652,10 @@ th {
 #mainChatRoom h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 5% ;
+    margin-bottom: 5%;
 }
 
-.chatBox > .chatBox {
+.chatBox>.chatBox {
     height: 50rem;
     overflow-y: auto;
     border: .5rem solid #3b6f98;
@@ -682,7 +684,7 @@ th {
 }
 
 .messageInfos p {
-    margin:5% 0;
+    margin: 5% 0;
 }
 
 .messageContent {
@@ -696,7 +698,7 @@ th {
 
 #mainChatRoom .form-group {
     width: 75%;
-} 
+}
 
 .send_message textarea {
     color: #ff7c00;
@@ -706,14 +708,14 @@ th {
     resize: none;
     margin: 5% 0;
     text-align: center;
-    
+
 }
 
 @media screen and (min-width: 481px) {
     .send_message textarea {
         font-size: 1.4rem;
     }
-    
+
     .messageCard {
         font-size: 1.4rem;
     }
