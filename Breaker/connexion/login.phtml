@@ -1,0 +1,52 @@
+<?php
+
+/***** is already connect *******/
+require_once 'auth.php';
+if (is_connect()) {
+    header('Location: index.php');
+    exit();
+}
+
+if (isset($_POST['test'])) {
+    header('Location: ./controler/inscriptionControl.php'); //location renvoie sur la page indiqué
+    exit();
+}
+require_once './pageElements/header.php';
+?>
+
+
+
+
+<main class="mainLogin">
+    <h2>Connexion</h2>
+    <?php if ($erreur) : ?>
+        <div>
+            <?= $erreur ?>
+        </div>
+    <?php endif; ?>
+
+    <form method="post" class="formLogin">
+        <div class="form-group">
+            <label for="name">Taper le nom d'utilisateur</label>
+            <input type="text" name="name" id="name" placeholder="nom d'utilisateur">
+            <label for="password">Taper le mot de passe</label>
+            <input type="password" name="password" id="password">
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+    </form>
+
+    <div class="sansCompte">Pas de compte ?
+
+        <form method="POST">
+            <input type="submit" name="test" value="S'inscrire en 4 entrées" class="btn" />
+        </form>
+    </div>
+    <div class="informations">
+        <p>La connexion est nécessaire pour accèder aux fonctionnalitées du site. </p>
+    </div>
+
+    <?php
+    require_once './pageElements/footer.php';
+    ?>

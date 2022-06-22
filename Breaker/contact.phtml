@@ -1,0 +1,51 @@
+<?php
+require_once 'connexion/auth.php';
+
+?>
+
+<?php
+
+require_once './pageElements/header.php';
+?>
+<main id="mainContact">
+    <h1>Contact</h1>
+    <form method="post" class ="formLogin">
+        <div class="form-group">
+            <label for = "email">Votre email</label>
+            <input type="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea name="message" rows="10" cols="50" required></textarea>
+            <button type="submit" class="btn"> Envoyer</button>
+        </div>
+    </form>
+<?php
+if (isset($_POST['email'])) {
+    $expe = htmlspecialchars($_POST['email']);
+    $expediteur = htmlspecialchars_decode($expe);
+    $entetes="From: '$expediteur'";
+    // /var_dump($entetes);
+}
+
+   $dest="brokeTheBreaker@gmail.com";
+   $objet="Envoi depuis la page Contact";
+
+   
+
+   
+    if (isset($_POST['message'])) {
+        $message = htmlspecialchars($_POST['message']);
+        $retour = mail($dest,$objet,htmlspecialchars_decode($message),$entetes);
+        if($retour)
+            echo "<p class ='mailSend'>Mail envoyé avec succès.</p>";
+        else{
+            //echo($message);
+            echo "<p class ='mailSend'>Un problème est survenu.</p>";
+            //exit;
+        }
+    }
+   
+?> 
+
+<?php
+    require_once './pageElements/footer.php';
+?>

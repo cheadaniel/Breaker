@@ -1,0 +1,74 @@
+<?php
+require_once 'connexion/auth.php';
+
+?>
+
+<?php if (is_connect()) : ?>
+
+    <?php
+
+    require_once 'controler/homePageControl.php';
+    require_once 'controler/compteControl.php';
+    require_once './pageElements/header.php';
+    ?>
+
+    <main id="mainCompte">
+        <h2>Mon compte</h2>
+        <p>Ce pseudo ne plaît plus : <span id="pseudoPlayer"><?= $player[0] ?></span> ?</p>
+        <p>Donner une nouvelle vie au compte.</p>
+        <p>Attention changer de pseudo amène à la déconnexion.</p>
+
+        <form method="post" class="formLogin">
+            <div class="form-group">
+
+                <input type="text" name="username" placeholder="Nouveau Pseudo" required />
+                <button type="submit" class="btn"> Modifier Pseudo</button>
+            </div>
+        </form>
+
+        <h3>Mon top 10</h3>
+        <div class="box-leaderboard own-message">
+            <table>
+                <!-- tableau qui contient le pseudo du joueur et le top 10 de ses scores-->
+
+                <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php for ($i = 0; $i < count($scoreGetPlayer); $i++) : ?>
+                        <tr>
+                            <td><?= $scoreGetPlayer[$i]["pseudo"] ?></td>
+                            <td><?= $scoreGetPlayer[$i]["number"] ?></td>
+                        </tr>
+                    <?php endfor; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <?php
+        if (isset($_POST['username'])) { //
+            if (inputChecking($_POST, $userGet) === true)  // si le tableau contient la valeur par défaut true: on va ajouter les données renseigner dans l'input dans la base de donnée
+            {
+                $username = secure_entry($_POST['username']);
+                changePseudoInScoreTable($pdo, $username, $player[1]); // fonctions qui modifient le nom dans la base de donné
+                changePseudoInUserTable($pdo, $username, $player[1]);
+
+                unset($_SESSION['connecte']); // force la déco, comme ca les infos sont rechargé et les infos dans le tableau de score ne seront pas incorrectes
+                header('Location: ./homePage.phtml'); //redirige apres la deco vers la page de connexion
+            } else {
+                $errorMessage = inputChecking($_POST, $userGet); // sort un message d'erreur si le tableau ne contient pas true
+            }
+
+        ?>
+
+        <?php } ?>
+
+    <?php endif; ?>
+
+    <?php
+    require_once './pageElements/footer.php';
+    ?>

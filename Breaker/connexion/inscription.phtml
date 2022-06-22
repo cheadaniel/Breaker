@@ -1,0 +1,105 @@
+<!-- non utilisation du template header et footer comme, le page ne se trouve pas a la racine : plus simple de les remettre manuellement -->
+<!doctype html>
+<html lang="fr-FR">
+
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="../style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="icon" href="./img/the_breaker_logo.png" />
+  <title>The Breaker</title>
+  <meta name="description" content="The Breaker est un casse-brique. C'est le premier projet sur lequel je travaille en autonomie. Il reprend le principe de base du jeu. On peut y enregistrer son score (si on le souhaite) et le comparer aux autres joueurs. On peut aussi discuter avec ces mêmes autres joueurs sur page de chat dédiée.">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="../index.php">
+        <img src="../img/the_breaker_logo.png" alt="logo">
+      </a>
+    </div>
+
+    <nav>
+      <ul class="navbar">
+        <a href="../index.php">
+          <li>Breaker</li>
+        </a>
+        <a href="../contact.phtml">
+          <li>Contact</li>
+        </a>
+      </ul>
+    </nav>
+  </header>
+
+
+
+
+  <main id="mainInscription">
+
+
+
+    <?php
+
+    // require_once '../pageElements/header.php';
+
+    if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['password_verif'])) //une fois l'inscription faite, affiche cette partie
+    { //
+      if (inputChecking($_POST, $userGet) === true)  // si le tableau contient la valeur par défaut true: on va ajouter les données renseigner dans l'input dans la base de donnée
+      {
+        $username = secure_entry($_POST['username']);
+        $email = secure_entry($_POST['email']);
+        $email_hash = password_hash($email,PASSWORD_DEFAULT); //crypte le mail ici
+        $password = secure_entry($_POST['password']);
+        $password_hash = password_hash($password, PASSWORD_DEFAULT); // crypte le mdp ici
+
+        addBDD($pdo, $username, $email_hash, $password_hash);
+
+        echo ("
+              <div class  = 'inscriptionDone'>
+                <h2>Compte créé </h2> 
+                <p>
+                  <a href ='../index.php'>Connectez-vous ici</a>
+                </p>
+              </div>  
+            "); // on dit que le compte a été crée avec succès
+
+
+      } else {
+        $errorMessage = inputChecking($_POST, $userGet); // sort un message d'erreur si le tableau ne contient pas true
+      }
+    } else { // affiche le formulaire pour s'inscrire
+    ?>
+
+      <h1>S'inscrire</h1>
+      <form method="post" class="formLogin">
+        <div class="form-group">
+
+          <input type="text" name="username" placeholder="Nom d'utilisateur" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Mot de passe (au moins 7)" required />
+          <input type="password" name="password_verif" placeholder="Vérifier le mot de passe" required />
+        </div>
+        <button type="submit" class="btn"> Register</button>
+
+        <p>Déjà inscrit ? <a href='../homePage.phtml'>Se connecter ici</a></p>
+      </form>
+
+
+    <?php } ?>
+
+
+    <?php if ($errorMessage) : ?>
+      <div class="inscriptionDone">
+        <?= $errorMessage ?>
+      </div>
+    <?php endif; ?>
+
+  </main>
+
+  <footer>
+    <img src="../img/the_breaker_logo.png" alt="logo">
+  </footer>

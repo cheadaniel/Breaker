@@ -1,0 +1,51 @@
+
+/***************************REQUETE SQL ************************************/
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: user
+#------------------------------------------------------------
+
+CREATE TABLE user(
+        id       Int  Auto_increment  NOT NULL ,
+        name     Varchar (255) NOT NULL ,
+        email    Varchar (255) NOT NULL ,
+        password Varchar (50) NOT NULL ,
+        admin    Bool NOT NULL DEFAULT 0
+	,CONSTRAINT user_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: score
+#------------------------------------------------------------
+
+CREATE TABLE score(
+        id      Int  Auto_increment  NOT NULL ,
+        number  Int NOT NULL ,
+        pseudo  Varchar (255) NOT NULL ,
+        id_user Int NOT NULL
+	,CONSTRAINT score_PK PRIMARY KEY (id)
+
+	,CONSTRAINT score_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: message
+#------------------------------------------------------------
+
+CREATE TABLE message(
+        id        Int  Auto_increment  NOT NULL ,
+        text      Varchar (4095) NOT NULL ,
+        create_at TimeStamp NOT NULL ,
+        id_user   Int NOT NULL
+	,CONSTRAINT message_PK PRIMARY KEY (id)
+
+	,CONSTRAINT message_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+)ENGINE=InnoDB;
+
+

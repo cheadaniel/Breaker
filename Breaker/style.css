@@ -1,0 +1,720 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #ffa334;
+    font-family: 'Courgette', cursive;
+    font-size: 1.2rem;
+    /*#ff7c00 orange du logo*/
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    background: linear-gradient(135deg, rgba(210, 76, 223, 1) 19%, rgba(151, 117, 250, 1) 41%, rgba(98, 68, 131, 1) 64%, rgba(109, 68, 120, 1) 100%);
+}
+
+button, input,textarea {
+    font-family: 'Courgette', cursive;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    
+}
+
+
+p,
+table,
+thead,
+tbody,
+tr,
+td,
+th,
+h1,
+h2,
+h3,
+textarea{
+    margin: 0;
+    padding: 0;
+}
+
+/******************* HEADER ****************/
+/******* Mobile First ********/
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(200deg, rgba(49, 105, 142, 1) 14%, rgba(63, 133, 175, 1) 29%, rgba(102, 84, 196, 1) 52%, rgba(131, 76, 194, 1) 65%, rgba(210, 73, 224, 1) 87%);
+    /*#7580b0 bleu du fond du header*/
+    /* height: 50%; */
+}
+
+.logo img {
+    width: 100%;
+    border-bottom: .2rem black dashed;
+}
+
+
+nav {
+    margin: 0;
+    padding: 0%;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
+    color: #ff7c00;
+    text-align: center;
+    margin: 0% 0;
+    padding: 0% 0;
+    font-weight: bold;
+    border-bottom: .2rem dashed black;
+    /* background-color: #3b6f98;  */
+}
+
+.navbar li {
+    padding: 2% 0;
+    font-size: 1.8rem;
+}
+
+.navbar a :hover {
+    background-color: #ff7c00;
+    /* orange du logo*/
+    color: blue;
+    /* bleu du logo*/
+    transition: 1.75s;
+}
+
+/******* Tablette : 980px max ********/
+/* idem */
+
+/******* PC : 981px min ********/
+
+@media screen and (min-width: 981px) {
+    .header {
+        flex-direction: row;
+    }
+
+    .logo img {
+        border: none;
+    }
+
+    .navbar a {
+        border-left: .2rem black dashed;
+    }
+}
+
+/**************************** FOOTER ******************************/
+footer {
+    background: linear-gradient(200deg, rgba(49, 105, 142, 1) 3%, rgba(63, 133, 175, 1) 18%, rgba(102, 84, 196, 1) 27%, rgba(131, 76, 194, 1) 55%, rgba(210, 73, 224, 1) 80%);
+    text-align: center;
+}
+
+footer img {
+    width: 25%;
+}
+
+/**************************** LOGIN ******************************/
+.mainLogin h2 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.formLogin {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.form-group {
+    margin: 5% 0 8% 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input {
+    margin: 5% 0;
+    border: #3b6f98 solid .2rem;
+    border-radius: .3rem;
+    padding: 0.5rem;
+    background: #3b6f98;
+    color: #ffa334;
+}
+
+.form-group input::placeholder {
+    color: #ffa334;
+}
+
+.btn {
+    border: #3b6f98 solid .2rem;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    background-color: #3b6f98;
+    padding: 1%;
+    color: #ff7c00;
+}
+
+.sansCompte {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.sansCompte a {
+    color: #ffa334;
+}
+
+.informations {
+    text-align: center;
+    padding: 5% 0;
+}
+
+/**************************** INSCRIPTION ******************************/
+
+#mainInscription h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#mainInscription form {
+    margin: 0;
+}
+
+
+#mainInscription .btn {
+    margin-bottom: 5%;
+}
+
+#mainInscription p {
+    margin-bottom: 3%;
+}
+
+#mainInscription .inscriptionDone {
+    text-align: center;
+    padding: 5% 0;
+}
+
+#mainInscription a {
+    color: #ffa334;
+}
+
+/**************************** HOMEPAGE ******************************/
+#mainHomePage {
+    position: relative;
+    text-align: center;
+}
+
+#launch {
+    position: absolute;
+    width: 50%;
+    top: 18%;
+    left: 25%;
+}
+
+#launch p {
+    margin-bottom: 10%;
+    font-size: 1.2rem;
+}
+
+#started {
+    border: #3b6f98 solid .2rem;
+    border-radius: .3rem;
+    font-size: 2rem;
+    background-color: #ff7c00;
+    padding: 5%;
+}
+
+#breakOut {
+    border: solid black .25rem;
+}
+
+#gameover {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    top: 9%;
+    left: 8%;
+    color: #fff;
+    text-align: center;
+}
+
+#youwon {
+    width: 100px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    display: none;
+}
+
+#youlose {
+    width: 100px;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    display: none;
+}
+
+#restart {
+    position: absolute;
+    top: 310px;
+    left: 155px;
+    cursor: pointer;
+    font-size: 1.25em;
+    color: #FFF;
+    z-index: 10;
+}
+
+#sendScore {
+    display: none;
+}
+
+#buttonSend {
+    border: #3b6f98 solid .2rem;
+    border-radius: .3rem;
+    font-size: 1.5rem;
+    background-color: #ff7c00;
+    padding: 3%;
+    position: absolute;
+    top: 18%;
+    left: 30%;
+    z-index: 10;
+    color: #3D46CD;
+}
+
+#score {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*border: 1px solid #ff7c00;*/
+    height: 30rem;
+    width: 100%;
+}
+
+#moveWithButton {
+    display: flex;
+    justify-content: space-between;
+    border-radius: .2rem;
+    height: 5rem;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+#moveWithButton #fleche-gauche,
+#moveWithButton #fleche-droite {
+    border: .2rem solid #3b6f98;
+    width: 50%;
+    height: 100%;
+    border-radius: .5rem;
+    background-color: #ff7c00;
+}
+
+#moveWithButton #fleche-gauche {
+    background-image: url(./img/leftArrow.svg);
+    background-repeat: no-repeat;
+    background-size: 5rem;
+    background-position: center;
+}
+
+#moveWithButton #fleche-droite {
+    background-image: url(./img/rightArrow.svg);
+    background-repeat: no-repeat;
+    background-size: 5rem;
+    background-position: center;
+}
+
+.send_score p {
+    margin-bottom: 5%;
+    font-size: 2.2rem;
+}
+
+.boxed {
+    display: flex;
+    justify-content: center;
+    width: 53%;
+    height: 10%;
+    background-color: #3b6f98;
+    place-items: center;
+    border-radius: .4rem;
+    z-index: 2;
+}
+
+.boxed label {
+    cursor: pointer;
+    width: 8rem;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.boxed input[type="radio"] {
+    display: none;
+}
+
+.boxed input[type="radio"]:checked+label {
+    background-color: #ff7c00;
+    height: 80%;
+    border-radius: .4rem;
+    place-items: center;
+    opacity: 1;
+    color: #fff;
+}
+
+.box-leaderboard {
+    display: none;
+    margin-top: 2rem;
+    height: 10%;
+}
+
+.label-leaderboard {
+    display: flex;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+td:first-child,
+th:first-child {
+    border-right: .1rem solid black;
+}
+
+td,
+th {
+    border-bottom: solid .1rem black;
+    padding: .45rem;
+}
+
+@media screen and (min-width: 481px) {
+    #gameover {
+        width: 100%;
+        height: 50%;
+        top: 0;
+        left: 0;
+    }
+
+
+    #moveWithButton {
+        margin-left: 20%;
+        width: 60%;
+    }
+
+    #launch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 16%;
+    }
+
+    #launch p {
+        width: 50%;
+    }
+
+    #started {
+        left: 10%;
+    }
+
+    #restart {
+        top: 60%;
+        left: 45%;
+    }
+
+    #youlose {
+        top: 40%;
+        left: 45%;
+    }
+
+    #youwon {
+        top: 40%;
+        left: 45%;
+    }
+
+    #buttonSend {
+        top: 10%;
+        left: 43%;
+    }
+}
+
+@media screen and (min-width: 981px) {
+    #moveWithButton {
+        display: none;
+    }
+
+    #launch p {
+        font-size: 1.5rem;
+    }
+
+    .boxed {
+        justify-content: space-around;
+        margin-top: 10%;
+        font-size: 2rem;
+    }
+
+    .boxed label {
+        width: 15rem;
+    }
+
+    td,
+    th {
+        font-size: 1.4rem;
+    }
+
+    #leaderboard {
+        height: 60rem;
+    }
+
+    #buttonSend {
+        padding: 1%;
+    }
+}
+
+
+/************************ COMPTE **********************/
+#mainCompte {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainCompte h2 {
+    margin: 5% 0;
+}
+
+#mainCompte p {
+    margin-bottom: 1.5%;
+}
+
+#mainCompte h3 {
+    font-size: 2rem;
+}
+
+#mainCompte .box-leaderboard {
+    display: block;
+}
+
+#mainCompte table {
+    margin-bottom: 10%;
+}
+
+
+/************************ ADMIN **********************/
+#mainAdmin {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playerInfos {
+    margin: 10% 0;
+}
+
+.playerCard {
+    margin-bottom: 50%;
+}
+
+.checkedOne,
+.checkedTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.toggleButtonAdmin,
+.toggleShowInfo {
+    margin-bottom: 5.5%;
+}
+
+.toggleShowInfo input,
+.toggleButtonScore,
+.toggleButtonMessage {
+    background-color: #ff7c00;
+    color: #3b6f98;
+    /*  padding: 5%; */
+}
+
+.checkedOne label,
+.checkedOne input,
+.checkedTwo label,
+.checkedTwo input,
+.messageText p,
+.numberScore {
+    margin-bottom: 2%;
+    color: #fff;
+}
+
+.checkedTwo input,
+.checkedOne input {
+    color: #3b6f98
+}
+
+.toggleShowInfo form {
+    margin-bottom: 10%;
+}
+
+.messageText {
+    border: .1rem solid #ff7c00;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0;
+}
+
+.messageText form {
+    margin: 0;
+}
+
+.delete {
+    margin-bottom: 0;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (min-width: 481px) {
+    .playerCard {
+        margin-bottom: 35%;
+    }
+
+    /* .toggleShowInfo form{
+        margin-bottom: 7.5%;
+    }*/
+}
+
+@media screen and (min-width: 981px) {
+    .playerCard {
+        margin-bottom: 15%;
+    }
+
+    /*.toggleShowInfo form{
+        margin-bottom: 5%;
+    }*/
+}
+
+
+/****************************** CONTACT ****************/
+#mainContact {
+    text-align: center;
+}
+
+#mainContact .formLogin {
+    margin-bottom: 0;
+}
+
+#mainContact .form-group {
+    width: 75%;
+} 
+
+#mainContact textarea {
+    color: #ff7c00;
+    background-color: #3b6f98;
+    border: .2rem solid #3b6f98;
+    border-radius: .5rem;
+    resize: none;
+    margin: 5% 0;
+    text-align: center;
+}
+
+#mainContact .mailSend {
+    padding-bottom: 5%;
+}
+
+
+/****************************** CHATROOM ****************/
+#mainChatRoom {
+    text-align: center;
+}
+
+#mainChatRoom h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 5% ;
+}
+
+.chatBox > .chatBox {
+    height: 50rem;
+    overflow-y: auto;
+    border: .5rem solid #3b6f98;
+    border-radius: .5rem;
+    margin: 2% 3%;
+
+}
+
+.messageCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    /*border-top: solid 0.2rem yellow;*/
+    border-bottom: dashed 0.2rem #ff7c00;
+    margin-bottom: 2%;
+}
+
+.messageInfos {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 1%;
+    border-right: 0.2rem #ff7c00 dashed;
+    width: 20%;
+}
+
+.messageInfos p {
+    margin:5% 0;
+}
+
+.messageContent {
+    padding: 0 5%;
+    width: 80%;
+}
+
+#mainChatRoom .formLogin {
+    margin-bottom: 0;
+}
+
+#mainChatRoom .form-group {
+    width: 75%;
+} 
+
+.send_message textarea {
+    color: #ff7c00;
+    background-color: #3b6f98;
+    border: .2rem solid #3b6f98;
+    border-radius: .5rem;
+    resize: none;
+    margin: 5% 0;
+    text-align: center;
+    
+}
+
+@media screen and (min-width: 481px) {
+    .send_message textarea {
+        font-size: 1.4rem;
+    }
+    
+    .messageCard {
+        font-size: 1.4rem;
+    }
+}

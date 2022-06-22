@@ -1,0 +1,86 @@
+<?php
+require_once 'connexion/auth.php';
+
+?>
+
+<?php if (is_connect() && ($_SESSION['admin'] == true)) : ?>
+
+    <?php
+
+    require_once 'controler/adminControler.php';
+    require_once './pageElements/header.php';
+    ?>
+    <main id="mainAdmin">
+        <script src="./js/function.js"></script>
+
+        <div class="playerName">
+            <?php for ($i = 0; $i < count($nonAdminUser); $i++) : ?>
+                <div class="playerInfos">
+                    <!-- affiche les infos su joueurs: son pseudo(possibilité de le delete/passer Admin) ses scores et ses messages-->
+                    <div class="playerCard">
+                        <!-- possibilité de passer Admin ou de delete-->
+                        <button class="toggleButtonAdmin btn"><?= htmlspecialchars_decode($nonAdminUser[$i]['name']) ?></button> <!-- affichera la possibilité de Admin/delete grace au js/jquery-->
+                        <div class="toggleShowInfo hide">
+                            <!-- hide de base et apparaitra grace au bouton-->
+                            <form action="./controler/adminFunction.php" method="post">
+                                <input type="submit" name="beAdmin" value="Le passer Admin" class="btn needCheckedOne" />
+                                <div class="checkedOne hide ">
+                                    <label for="playerNameAdmin">Taper le pseudo pour valider l'opération.</label>
+                                    <input name="playerNameAdmin" class="validation" id="playerNameAdmin" required /><!-- recuperer le pseudo dans le fichier php-->
+                                    <input type="submit" name="passerAdmin" value="Passer Admin" class="btn" />
+                                </div>
+                            </form>
+                            <form action="controler/adminFunction.php" method="post">
+                                <input type="submit" name="beDelete" value="L'effacer" class="btn needCheckedTwo" />
+                                <div class="checkedTwo hide">
+                                    <label for="playerNameDelete">Taper le pseudo pour valider l'opération.</label>
+                                    <input name="playerNameDelete" class="validation" id="playerNameDelete" required />
+                                    <input type="submit" name="effacer" value="Delete joueur" class="btn" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="toggleShowInfo hide">
+                            <p class="playerScore">
+                                <button class="btn toggleButtonScore">Scores</button><!-- possibilité de voir les scores du joueur-->
+                                <?php for ($j = 0; $j < count($nonAdminUserScore); $j++) : ?>
+                                    <?php if ($nonAdminUser[$i]['name'] == $nonAdminUserScore[$j]['pseudo']) : ?>
+                            <p class="numberScore hide"> <?= $nonAdminUserScore[$j]['number'] ?></p>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+
+                        </div>
+                        <div class="toggleShowInfo hide">
+                            <p class="messagePlayer">
+                                <button class="btn toggleButtonMessage">Messages</button><!-- possibilité de voir les messages du joueur-->
+                                <?php for ($j = 0; $j < count($nonAdminUserMessage); $j++) : ?>
+                                    <?php if ($nonAdminUser[$i]['id'] == $nonAdminUserMessage[$j]['id_user']) : ?>
+                            <div class="messageText hide">
+                                <p>
+                                    <?= htmlspecialchars_decode($nonAdminUserMessage[$j]['text']) ?>
+                                </p>
+                                <form action="controler/adminFunction.php" method="post">
+                                    <input type="hidden" value="<?= $nonAdminUserMessage[$j]['id'] ?> " name="messageId" /> <!-- recuperer ici l'id du message directement, il est invisible et en php l'entrée est sécurisée grâce a htmlspecialchars-->
+                                    <input type="submit" name="deleteMessage" value="Effacer le message" class=" delete btn" />
+                                </form>
+                            </div>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+
+                        </div>
+                    </div>
+                </div>
+
+            <?php endfor; ?>
+
+
+        </div>
+
+    <?php else : ?>
+
+        <?php require_once 'controler/loginControl.php' ?>
+
+    <?php endif; ?>
+
+    <?php
+    require_once './pageElements/footer.php';
+    ?>

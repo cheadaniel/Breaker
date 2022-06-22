@@ -1,0 +1,128 @@
+<?php
+require_once 'connexion/auth.php';
+
+?>
+
+<?php if (is_connect()) : ?>
+
+    <?php
+
+    require_once 'controler/homePageControl.php';
+    require_once './pageElements/header.php';
+    ?>
+    <main id="mainHomePage">
+
+        <div class="send_score">
+            <p>Let's GO, let's play together <span id="pseudoPlayer"><?= $player[0] ?></span></p>
+        </div>
+        <form class="send_score" id="sendScore">
+            <!-- Choisir d'enregistrer son score non: permettre les phases d'entrainement: je prefere jouer comme ca-->
+            <input type="submit" value="Send Score !" id="buttonSend">
+        </form>
+
+        <div id="gameover">
+
+            <div>
+                <h2>Le score de la partie : </h2>
+                <p id="score" type="number" name='score'></p>
+            </div>
+
+            <div id="restart">Play Again !</div>
+
+            <img src="img/victorySign.png" alt="won" id="youwon">
+            <img src="img/TheLost.png" alt="lose (isaac ref)" id="youlose">
+        </div>
+
+        <div id="jeux">
+            <div id="launch">
+                <p>Pour jouer à ce jeu, il suffit de cliquer sur ce bouton.</p>
+                <p id="msgArrow">(flèche gauche/flèche droite pour bouger)</p> <!-- indique comment jouer au jeu-->
+                <button id="started">Let's Break</button> <!-- au clique activera le jeu-->
+            </div>
+
+
+            <canvas id="breakOut" width="400" height="500"></canvas>
+            <script src="./js/components.js"></script>
+            <script type="module" src="./js/app.js"></script>
+            <script type="module" src="./js/sendResult.js"> </script>
+            <div id="moveWithButton">
+                <!-- gerer les deplacements sur tablette et mobile -->
+                <button id="fleche-gauche"></button>
+                <button id="fleche-droite"></button>
+            </div>
+
+
+        </div>
+
+        <script src="./js/function.js"></script>
+        <div id="leaderboard">
+            <!-- affichage du score -->
+            <div class="boxed">
+                <!-- affichage des 2 boutons pour le score du joueur ou global -->
+                <input type="radio" name="leaderBoard" id="own-input" value="own-message"> <!-- affichage des scores solo-->
+                <label for="own-input" class="label-leaderboard">
+                    My Score
+                </label>
+
+                <input type="radio" name="leaderBoard" id="global-input" value="global-message"> <!-- affichage des scores globaux-->
+                <label for="global-input" class="label-leaderboard">
+                    Global Score
+                </label>
+            </div>
+
+            <div class="box-leaderboard own-message">
+                <!-- top 10 du joueur-->
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Pseudo</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php for ($i = 0; $i < count($scoreGetPlayer); $i++) : ?>
+                            <tr>
+                                <td><?= $scoreGetPlayer[$i]["pseudo"] ?></td>
+                                <td><?= $scoreGetPlayer[$i]["number"] ?></td>
+                            </tr>
+                        <?php endfor; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-leaderboard global-message">
+                <!-- top 10 globaux-->
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Pseudo</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php for ($i = 0; $i < count($scoreGetGlobal); $i++) : ?>
+                            <tr>
+                                <td><?= $scoreGetGlobal[$i]["pseudo"] ?></td>
+                                <td><?= $scoreGetGlobal[$i]["number"] ?></td>
+                            </tr>
+                        <?php endfor; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    <?php else : ?>
+
+        <?php require_once 'controler/loginControl.php' ?>
+
+    <?php endif; ?>
+
+    <?php
+    require_once './pageElements/footer.php';
+    ?>
