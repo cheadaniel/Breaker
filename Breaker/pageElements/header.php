@@ -24,30 +24,42 @@
 
         <nav>
             <ul class="navbar">
-                <a href="./index.php">
-                    <li>Breaker</li>
-                </a>
-                <a href="./contact.phtml">
-                    <li>Contact</li>
-                </a>
+                <li>
+                    <a href="./index.php">
+                        Breaker
+                    </a>
+                </li>
+                <li>
+                    <a href="./contact.phtml">
+                        Contact
+                    </a>
+                </li>
                 <?php if (is_connect()) : // s affiche seuelement si le joueur est connecté
                 ?>
+                <li>
                     <a href="./chatRoom.phtml">
-                        <li>ChatRoom</li>
+                        ChatRoom
                     </a>
+                </li>
+                <li>
                     <a href="./compte.phtml">
-                        <li>Compte</li>
+                        Compte
                     </a>
+                </li>
 
                     <?php if ($_SESSION['admin'] == true) : // s'affiche seulement si le joueur est admin
                     ?>
-                        <a href="./admin.phtml">
-                            <li>Admin</li>
-                        </a>
+                        <li>
+                            <a href="./admin.phtml">
+                                Admin
+                            </a>
+                        </li>
                     <?php endif; ?>
-                    <a href="connexion/logout.php">
-                        <li>Logout</li>
-                    </a>
+                    <li>
+                        <a href="connexion/logout.php">
+                            Logout
+                        </a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </nav>

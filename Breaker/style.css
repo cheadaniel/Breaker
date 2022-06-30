@@ -80,7 +80,7 @@ nav {
     padding: 0;
 }
 
-.navbar a {
+.navbar li {
     color: #ff7c00;
     text-align: center;
     margin: 0% 0;
@@ -90,12 +90,12 @@ nav {
     /* background-color: #3b6f98;  */
 }
 
-.navbar li {
+.navbar li a {
     padding: 2% 0;
     font-size: 1.8rem;
 }
 
-.navbar a :hover {
+.navbar li :hover {
     background-color: #ff7c00;
     /* orange du logo*/
     color: blue;
